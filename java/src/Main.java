@@ -42,21 +42,16 @@ public class Main {
                 long recordedTime = System.currentTimeMillis();
 
                 int numberOfResults = endInt - startInt;
-                String[] results = TestDB.query("SELECT * FROM tracks OFFSET " + startInt + " LIMIT " + numberOfResults);
+                String results = TestDB.getTracks(startInt, numberOfResults);
 
                 System.out.println("query speed <" + (System.currentTimeMillis() - recordedTime) + ">" );     
 
-                final JSONArray jsonArray = new JSONArray();
-                for (String result : results) {
-                    jsonArray.getValue().add(new JSONString(result));
-                }
                 //System.out.println("time creating json array: " + (System.currentTimeMillis() - recordedTime));
                 recordedTime = System.currentTimeMillis();
-                String renderedJSONString = jsonArray.render(true);
                 //System.out.println("time rendering json array: " + (System.currentTimeMillis() - recordedTime));
                 //System.out.println(renderedJSONString);     
 
-                return renderedJSONString;
+                return results;
             } catch (TokenStreamException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
