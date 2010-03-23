@@ -11,6 +11,8 @@ WebkitApi::WebkitApi( Playdar::Client * client, Playengine * p, QObject *parent 
 {
     pc = client;
     player = p;
+    spoonCore = new SpoonCore();
+
     qDebug() << "WebkitAPI CTOR";
 
     connect(player, SIGNAL(tick(int,int)),
@@ -39,6 +41,7 @@ void WebkitApi::setWebView( QWebView *view )
 void WebkitApi::attachObject()
 {
     frame->addToJavaScriptWindowObject( QString("MK"), this );
+    frame->addToJavaScriptWindowObject( QString("Spoon"), spoonCore );
 }
 
 void WebkitApi::reemitStatusChanged(Playengine::STATUS s)

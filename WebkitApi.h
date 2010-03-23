@@ -7,9 +7,12 @@
 #include <qjson/parser.h>
 #include <qjson/serializer.h>
 #include <qjson/qobjecthelper.h>
+#include <spoon/SpoonCore.h>
 
 class QWebView;
 class QWebFrame;
+
+#include <tr1/memory>
 
 class WebkitApi : public QObject
 {
@@ -52,6 +55,7 @@ private:
     Playdar::Client * pc;
     Playengine * player;
     QJson::Serializer serializer;
+    SpoonCore* spoonCore;
 };
 
 

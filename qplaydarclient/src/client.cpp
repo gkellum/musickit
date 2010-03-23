@@ -26,6 +26,8 @@ QString Client::resultUrl(const QString &str) const
     } else {
         qDebug() << "Failed to parse result in resultUrl call";
     }
+
+    return QString();
 }
 
 QString Client::resultUrl(r_ptr r) const

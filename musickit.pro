@@ -11,7 +11,9 @@ SOURCES  += main.cpp \
             qplaydarclient/src/query.cpp \
             qplaydarclient/src/result.cpp \
             qplaydarclient/src/client.cpp \
-            player/playengine.cpp
+            player/playengine.cpp \
+    spoon/SpoonCore.cpp \
+    spoon/JavaBridge.cpp
 
 HEADERS  += mainwindow.h \
             WebkitApi.h \
@@ -19,16 +21,16 @@ HEADERS  += mainwindow.h \
             qplaydarclient/include/qplaydar/client.h \
             qplaydarclient/include/qplaydar/query.h \
             qplaydarclient/include/qplaydar/result.h \
-            player/playengine.h
+            player/playengine.h \
+    spoon/SpoonCore.h \
+    spoon/JavaBridge.h
 
 
 
-LIBS += -L/usr/local/lib -lqjson
+LIBS += -L/usr/local/lib -lqjson -framework JavaVM
 
-INCLUDEPATH += qplaydarclient/include
+INCLUDEPATH += qplaydarclient/include /Library/Java/Home/include
 
 #CONFIG += static warn_off # for static qt
 
 #windows:LIBS += -lws2_32 # explicitly link to winsock (not sure why this is needed)
-
-

@@ -11,6 +11,7 @@
 #include <QWebSecurityOrigin>
 #include <QMenu>
 #include <QMenuItem>
+#include <QDir>
 
 //#include <QNetworkCookieJar>
 //#include <QNetworkCookie>
@@ -18,7 +19,6 @@
 
 MainWindow::MainWindow()
 {
-
     nam = new QNetworkAccessManager(this);
     pc = new Playdar::Client(nam, this);
     player = new Playengine(this);
@@ -36,7 +36,7 @@ MainWindow::MainWindow()
     connect(audioOutput, SIGNAL(volumeChanged(qreal)), this, SLOT(volumeChanged(qreal)));
 */
 
-    webView->load(QUrl("www/demo/index.html"));
+    webView->load(QUrl("www/demo_of_library/index.html"));
 
     show();
 }
